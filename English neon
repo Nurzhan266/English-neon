@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyLine English — Neon Cyber Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* НЕОНОВАЯ ЦВЕТОВАЯ ПАЛИТРА */
+        :root {
+            --bg-dark: #0a0a0f;       /* Глубокий черный фон */
+            --bg-card: #12121a;       /* Чуть более светлый тон для карточек */
+            --neon-pink: #ff007f;     /* Ядовито-розовый неон */
+            --neon-cyan: #00f0ff;     /* Бирюзовый неон для баланса */
+            --text-white: #f8fafc;    /* Белый текст */
+            --text-gray: #94a3b8;     /* Серый текст */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Светящаяся шапка */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(10, 10, 15, 0.9);
+            border-bottom: 2px solid var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--text-white);
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-white);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        /* Главный экран в стиле Киберпанк */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 10%;
+            background: radial-gradient(circle at top right, rgba(255, 0, 127, 0.15), transparent 60%);
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--text-white);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px var(--neon-pink);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            color: var(--text-gray);
+        }
+
+        /* Розовая неоновая кнопка */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: transparent;
+            color: var(--neon-pink);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            border: 2px solid var(--neon-pink);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2), inset 0 0 10px rgba(255, 0, 127, 0.2);
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: var(--neon-pink);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px var(--neon-pink), 0 0 50px var(--neon-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Бирюзовая кнопка (для контраста) */
+        .btn-cyan {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2), inset 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .btn-cyan:hover {
+            background-color: var(--neon-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px var(--neon-cyan), 0 0 50px var(--neon-cyan);
+        }
+
+        /* Неоновые карточки курсов */
+        .courses {
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .courses h2 {
+            font-size: 40px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 35px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            font-size: 15px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--neon-cyan);
+            margin-top: 25px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Интерактивный Квиз */
+        .quiz-section {
+            background: var(--bg-card);
+            padding: 60px 10%;
+            max-width: 800px;
+            margin: 0 auto 100px auto;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.1);
+            text-align: center;
+        }
+
+        .quiz-section h2 {
+            text-shadow: 0 0 10px var(--neon-pink);
+            margin-bottom: 10px;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin: 15px 0;
+            background: #181824;
+            border: 1px solid #2d2d3f;
+            border-radius: 4px;
+            color: var(--text-white);
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--neon-cyan);
+            background: rgba(0, 240, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+            color: var(--neon-cyan);
+        }
+
+        /* Форма заказа под неоновым фильтром */
+        .order-form {
+            background: linear-gradient(to top, #050508, var(--bg-card));
+            border-top: 1px solid rgba(255, 0, 127, 0.2);
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .order-form h2 {
+            text-shadow: 0 0 15px var(--neon-pink);
+            margin-bottom: 10px;
+        }
+
+        .order-form input {
+            padding: 16px;
+            width: 280px;
+            margin: 10px;
+            border-radius: 4px;
+            border: 1px solid #2d2d3f;
+            background: #181824;
+            color: var(--text-white);
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .order-form input:focus {
+            outline: none;
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><i class="fa-solid fa-bolt"></i> SKYLINE.NEON</div>
+        <nav>
+            <a href="#courses">Программы</a>
+            <a href="#quiz">Тест уровня</a>
+            <a href="#contact" class="btn btn-cyan" style="padding: 6px 16px; font-size: 14px;">Вход</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Загрузи английский в свой мозг</h1>
+            <p>Прокачай разговорный скилл до неузнаваемости. Хватит учить по скучным книгам — переходи на интерактивный кибер-интенсив.</p>
+            <button class="btn" onclick="scrollToElement('quiz')">Запустить тест</button>
+        </div>
+        <div class="hero-img">
+            <i class="fa-solid fa-brain" style="font-size: 160px; color: var(--neon-pink); filter: drop-shadow(0 0 20px var(--neon-pink));"></i>
+        </div>
+    </section>
+
+    <section class="courses" id="courses">
+        <h2>Доступные Скилл-паки</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fa-solid fa-terminal" style="color: var(--neon-pink)"></i> Cyber-Beginner (A1)</h3>
+                <p>Базовый синтаксис языка. Учимся понимать простую речь и ломаем языковой барьер с первого дня.</p>
+                <div class="price">4 500 ₽ / мес</div>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-code" style="color: var(--neon-cyan)"></i> English for IT & Devs</h3>
+                <p>Техническая документация, код-ревью, прохождение собесов в зарубежные компании и работа с AI.</p>
+                <div class="price">6 000 ₽ / мес</div>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-user-ninja" style="color: #10b981"></i> Street Talk (Разговорный)</h3>
+                <p>Сленг, живое общение, понимание фильмов в оригинале и уверенные путешествия без гида.</p>
+                <div class="price">4 000 ₽ / мес</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quiz-section" id="quiz">
+        <h2>Сканирование твоего уровня</h2>
+        <p style="margin-bottom: 25px; color: var(--text-gray);">Реши задачу, чтобы система определила твой класс:</p>
+        
+        <div id="quiz-box">
+            <h3 id="question" style="margin-bottom: 20px; color: var(--neon-cyan)">"I ___ working on a new project right now."</h3>
+            <button class="quiz-option" onclick="checkAnswer('am')">a) am</button>
+            <button class="quiz-option" onclick="checkAnswer('is')">b) is</button>
+            <button class="quiz-option" onclick="checkAnswer('are')">c) are</button>
+        </div>
+    </section>
+
+    <section class="order-form" id="contact">
+        <h2>Подключиться к потоку</h2>
+        <p style="margin-bottom: 30px; color: var(--text-gray)">Оставь контакты, и мы зачислим тебя на бесплатный первый уровень</p>
+        <form onsubmit="handleForm(event)">
+            <input type="text" placeholder="Имя пользователя" required>
+            <input type="tel" placeholder="Номер терминала (Телефон)" required>
+            <button type="submit" class="btn btn-cyan">Активировать</button>
+        </form>
+    </section>
+
+    <script>
+        function scrollToElement(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function checkAnswer(answer) {
+            const quizBox = document.getElementById('quiz-box');
+            if (answer === 'am') {
+                quizBox.innerHTML = `
+                    <h3 style="color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan);"><i class="fa-solid fa-check-double"></i> Доступ разрешен!</h3>
+                    <p style="margin-top: 15px; color: var(--text-gray)">Отлично! Ты знаешь Present Continuous. Твой уровень явно выше базового. Оставляй заявку ниже, подберем мощную группу!</p>
+                `;
+            } else {
+                quizBox.innerHTML = `
+                    <h3 style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink);"><i class="fa-solid fa-bug"></i> Ошибка детекции</h3>
+                    <p style="margin-top: 15px; color: var(--text-gray)">Правильный ответ: <b>am</b> (I am working...). Ничего страшного, наш курс Cyber-Beginner исправит этот баг за пару занятий!</p>
+                `;
+            }
+        }
+
+        function handleForm(event) {
+            event.preventDefault();
+            alert('Сигнал принят! Наш координатор свяжется с тобой для активации доступа.');
+        }
+    </script>
+</body>
+</html>
+
